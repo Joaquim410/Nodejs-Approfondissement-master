@@ -18,6 +18,9 @@ class UserService {
   delete(id) {
     return User.deleteOne({ _id: id });
   }
+  getArticlesByUserId(userId) {
+    return Article.find({ user: userId }).select('-password').populate('user');
+  }
   async checkPasswordUser(email, password) {
     const user = await User.findOne({ email });
     if (!user) {

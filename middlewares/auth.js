@@ -1,6 +1,6 @@
 const UnauthorizedError = require("../errors/unauthorized");
 const jwt = require("jsonwebtoken");
-const User = require("../api/users/user.model"); 
+const User = require("../api/users/users.model"); 
 const config = require("../config");
 
 module.exports = async (req, res, next) => {
