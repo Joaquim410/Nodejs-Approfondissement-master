@@ -6,6 +6,7 @@ const NotFoundError = require("./errors/not-found");
 const userRouter = require("./api/users/users.router");
 const usersController = require("./api/users/users.controller");
 const authMiddleware = require("./middlewares/auth");
+const articlesRouter = require('./api/articles/articles.router');
 require("./api/articles/articles.schema"); // temporaire
 const app = express();
 
@@ -46,6 +47,8 @@ app.use((error, req, res, next) => {
     message,
   });
 });
+
+app.use('/api/articles', authMiddleware, articlesRouter);
 
 module.exports = {
   app,
